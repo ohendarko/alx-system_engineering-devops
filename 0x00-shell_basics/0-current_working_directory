@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "$(realpath -s . |)"
+echo " :$(realpath -s . |)"
