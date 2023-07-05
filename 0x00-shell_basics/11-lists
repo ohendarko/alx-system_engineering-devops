@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -al . .. <<< "Contents of the complicated:"
+ls -al . .. /boot <<< "Contents of the complicated:"
