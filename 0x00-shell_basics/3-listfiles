@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -la <<< "Detailed contents of the current directory:"
+ls -l <<< "Detailed contents of the current directory:"
