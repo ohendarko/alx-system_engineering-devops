@@ -1,2 +1,2 @@
 #!/bin/bash
-mkdir tmp/my_first_directory <<< "Create directory in tmp directory:"
+mkdir /tmp/my_first_directory <<< "Create directory in tmp directory:"
