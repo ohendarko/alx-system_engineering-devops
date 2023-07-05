@@ -1,2 +1,2 @@
 #!/bin/bash
-mvtmp/betty tmp/my_first_directory/ <<< "Move into tmp directory:"
+mv tmp/betty tmp/my_first_directory/betty <<< "Move into tmp directory:"
