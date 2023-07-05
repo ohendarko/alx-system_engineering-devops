@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -p | grep -v '/' <<< "Contents of the current directory:"
+ls <<< "Contents of the current directory:"
