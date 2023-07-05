@@ -1,2 +1,2 @@
 #!/bin/bash
-cd .. <<< "Change to previous directory:"
+echo '/var ' <<< "Change to previous directory:"
