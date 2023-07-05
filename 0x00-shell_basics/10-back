@@ -1,0 +1,2 @@
+#!/bin/bash
+cd .. <<< "Change to previous directory:"

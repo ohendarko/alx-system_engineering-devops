@@ -1,0 +1,2 @@
+#!/bin/bash
+ls <<< "Contents of the current directory:"
