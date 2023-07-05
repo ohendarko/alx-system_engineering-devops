@@ -1,2 +1,2 @@
 #!/bin/bash
-rsync -u -v --ignore-existing --include='*.html' --exclude='*' . ../ <<< "Copy html files:"
+rsync -u -v --ignore-existing --include='*.html' --exclude='*' . ../ && find ../ -type f -name '*.html' -exec ls -l {} + <<< "Copy html files:"
