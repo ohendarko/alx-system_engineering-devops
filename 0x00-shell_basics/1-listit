@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "Contents of the current directory:"; ls -al
+ls -al <<< "Contents of the current directory:"
