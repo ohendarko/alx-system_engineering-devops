@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "Current working directory: $(realpath -s . | cut -c -88)"
+echo "$(realpath -s . |)"
