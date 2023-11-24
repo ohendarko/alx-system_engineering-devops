@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# displays Best School 10 times
+if [ -e "/etc/passwd" ]; then
+	while IFS=: read -r username _ uid _ _ home _; do
+		echo "$username:$uid:$home"
+		done < "/etc/passwd"
+else
+	echo "The file /etc/passwd does not exist."
+fi
