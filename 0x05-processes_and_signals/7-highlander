@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 # displays To infinity and beyond indefinitely.
-cleanup() {
+terminate() {
 	echo "I am invincible!!!"
 	exit 0
 }
-trap cleanup SIGTERM
+trap terminate SIGTERM
 while true; do
 	echo "To infinity and beyond"
 	sleep 2
