@@ -3,7 +3,7 @@
 if [ -e "/etc/passwd" ]; then
 	while IFS=: read -r username x uid gid info home shell; do
 		uid_info=$(grep -w "$uid" /etc/passwd | cut -d: -f5)
-		echo "The user $username is part of the $gid gang, lives in $home, and rides $shell. $uid's place is protected by the passcode $info, more info about the user here: $uid_info"
+		echo "The user $username is part of the $gid gang, lives in $home, and rides $shell. $uid's place is protected by the passcode x, more info about the user here: $uid_info"
 	done < "/etc/passwd"
 else
 	echo "The file /etc/passwd does not exist."
