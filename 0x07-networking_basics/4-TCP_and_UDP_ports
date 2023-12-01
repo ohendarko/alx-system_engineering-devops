@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#  Displays listening ports
+listening_sockets=$(netstat -tuln | awk '$6 == "LISTEN" {print $4}')
+
+while IFS= read -r socket; do
+    port=$(echo "$socket" | awk -F':' '{print $NF}')
+    pid_name=$(lsof -i :"$port" | awk 'NR==2 {print $2, $1}')
+    echo "Port: $port, PID and Program: $pid_name"
+done <<< "$listening_sockets"
