@@ -1,9 +1,18 @@
 #!/usr/bin/env bash
 #  Displays listening ports
-listening_sockets=$(netstat -tuln | awk '$6 == "LISTEN" {print $4}')
-
-while IFS= read -r socket; do
-    port=$(echo "$socket" | awk -F':' '{print $NF}')
-    pid_name=$(lsof -i :"$port" | awk 'NR==2 {print $2, $1}')
-    echo "Port: $port, PID and Program: $pid_name"
-done <<< "$listening_sockets"
+echo "Active Internet connections (only servers)"
+echo "Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name"
+netstat -tlnp | awk '/^tcp/ {print $1, $4, $7}' | sed 's/:/ /' | while read proto local foreign; do
+    pid=$(echo "$foreign" | awk -F '/' '{print $1}')
+    program=$(echo "$foreign" | awk -F '/' '{print $2}')
+    echo "$proto        -      -      $local              -                    LISTEN      $pid/$program"
+done
+netstat -ulnp | awk '/^udp/ {print $1, $4, $7}' | sed 's/:/ /' | while read proto local foreign; do
+    pid=$(echo "$foreign" | awk -F '/' '{print $1}')
+    program=$(echo "$foreign" | awk -F '/' '{print $2}')
+    echo "$proto       -      -      $local              -                    -          $pid/$program"
+done
+echo "Active UNIX domain sockets (only servers)"
+netstat -lx | awk '/^unix/ {print $1, $4, $8, $9}' | while read proto refs flags type state inode pid_program path; do
+    echo "$proto $refs $flags $type $state $inode   $pid_program $path"
+done
