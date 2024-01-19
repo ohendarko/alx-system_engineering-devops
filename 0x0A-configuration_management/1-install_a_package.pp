@@ -1,11 +1,12 @@
+#!/usr/bin/pup
 #  Install flask from pip3
 
 package{ 'python3-pip':
-  ensure => present,
+  ensure => present
 }
 
 package { 'flask':
   ensure   => '2.1.0',
   provider => 'pip3',
-  require  => Package['python3-pip'],
+  require  => Package['python3-pip']
 }
