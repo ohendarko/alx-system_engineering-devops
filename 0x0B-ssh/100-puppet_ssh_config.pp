@@ -1,3 +1,5 @@
+# Puppet manifest for SSH client configuration
+
 exec { 'turn-off-password-auth':
   command     => '/bin/sed -i "s/^PasswordAuthentication.*/PasswordAuthentication no/" /etc/ssh/sshd_config',
   refreshonly => true,
