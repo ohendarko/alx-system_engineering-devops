@@ -1,0 +1,9 @@
+# ~/.ssh/config
+
+Host 460690-web-01
+    HostName 54.145.240.142
+    User ubuntu
+    IdentityFile ~/.ssh/school
+    PreferredAuthentications publickey
+    PasswordAuthentication no
+    PubkeyAuthentication yes
