@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 # Configure Nginx server so that /redirect_me is redirecting to another page.
 
-# Create a backup of the default Nginx configuration file
-sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/default.bak
-
 # Configure Nginx to perform a 301 redirection for /redirect_me
 echo 'server {
     listen 80;
