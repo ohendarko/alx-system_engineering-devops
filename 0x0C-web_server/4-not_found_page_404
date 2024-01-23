@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# Configure Nginx server to have a custom 404 page
+
+# Create a backup of the default Nginx configuration file
+sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/default.bak
+
+# Configure Nginx to perform a 301 redirection for /redirect_me
+echo 'server {
+    listen 80;
+    server_name localhost;
+
+    error_page 404 /custom_404.html;
+    location = /custom_404.html {
+        root /var/www/html; # Change this to the actual path where your HTML files are stored
+        internal;
+        return 404 'Ceci n\'est pas une page\n';
+    }
+    
+}' | sudo tee /etc/nginx/sites-available/default
+
+sudo service nginx reload
