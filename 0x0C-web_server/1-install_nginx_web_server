@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# Configures a new Ubuntu machine
+
+sudo apt-get update
+
+sudo apt-get -y install nginx
+
+sudo sed -i 's/listen 80 default_server;/listen 80;/g' /etc/nginx/sites-available/default
+
+
+echo 'server {
+    listen 80;
+    server_name localhost;
+    location / {
+      default_type text/html;
+      return 200 "Hello World!";
+    }
+}' | sudo tee /etc/nginx/sites-available/default
+
+sudo service nginx reload
