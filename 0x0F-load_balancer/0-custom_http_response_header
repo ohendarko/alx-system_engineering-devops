@@ -1,4 +1,4 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 # configure web-02 as web-01
 
 sudo apt-get update
