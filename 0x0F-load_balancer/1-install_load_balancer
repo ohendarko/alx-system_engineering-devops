@@ -18,8 +18,8 @@ backend backweb
     timeout server 10s
     mode http
     balance roundrobin
-    server web-01 [STUDENT_ID]-web-01:80 check
-    server web-02 [STUDENT_ID]-web-02:80 check
+    server web-01 54.145.240.142:80 check
+    server web-02 100.26.238.188:80 check
     option http-server-close
     option forwardfor
     http-request add-header X-Served-By %[src]
