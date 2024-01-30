@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# Install and configure HAProxy on a new ubuntu machine
+
+sudo apt-get update
+sudo apt-get -y install haproxy
+
+sudo tee /etc/haproxy/haproxy.cfg > /dev/null <<EOF
+frontend frontweb
+    bind *:80
+    mode http
+    timeout client 60s
+    default_backend backweb
+	
+backend backweb
+    timeout connect 10s
+    timeout server 10s
+    mode http
+    balance roundrobin
+    server web-01 [STUDENT_ID]-web-01:80 check
+    server web-02 [STUDENT_ID]-web-02:80 check
+    option http-server-close
+    option forwardfor
+    http-request add-header X-Served-By %[src]
+EOF
+
+sudo systemctl enable haproxy
+sudo systemctl start haproxy
