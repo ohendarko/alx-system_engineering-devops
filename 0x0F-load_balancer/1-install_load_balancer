@@ -4,7 +4,9 @@
 sudo apt-get update
 sudo apt-get -y install haproxy
 
-sudo tee /etc/haproxy/haproxy.cfg > /dev/null <<EOF
+sudo cp /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg.backup
+
+cat <<EOF | sudo tee /etc/haproxy/haproxy.cfg > /dev/null
 frontend frontweb
     bind *:80
     mode http
@@ -23,5 +25,4 @@ backend backweb
     http-request add-header X-Served-By %[src]
 EOF
 
-sudo systemctl enable haproxy
-sudo systemctl start haproxy
+sudo systemctl restart haproxy
