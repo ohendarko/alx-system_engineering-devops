@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 # Diplay information about domains
 
-#!/bin/bash
-
-# Function to display information about subdomains
 display_info() {
     local domain="$1"
     local subdomain="$2"
