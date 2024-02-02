@@ -1,8 +1,12 @@
 frontend frontweb
     bind *:80
-    bind *:443 ssl crt /etc/haproxys.pem
     mode http
     timeout client 60s
+    default_backend backweb
+
+frontend frontweb_secure
+    bind *:443 ssl crt /etc/haproxys.pem
+    http-request set-header X-Forwarded-Proto https
     default_backend backweb
 
 backend backweb
