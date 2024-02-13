@@ -10,7 +10,7 @@ fi
 password=$1
 
 timestamp=$(date +"%d-%m-%Y")
-mysqldump -u root -p "$password" --all-databases > "backup.sql"
+mysqldump -u root -p"$password" --all-databases > "backup.sql"
 
 # Check if mysqldump was successful
 if [ $? -ne 0 ]; then
