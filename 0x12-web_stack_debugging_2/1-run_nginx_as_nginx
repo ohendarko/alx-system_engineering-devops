@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Fix a container so that Nginx is running as the nginx user
+
+docker exec nginx-container sed -i 's/user  nginx;/user  nginx nginx;/' /etc/nginx/nginx.conf
+
+docker restart nginx-container
