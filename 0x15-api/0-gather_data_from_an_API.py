@@ -20,7 +20,7 @@ if __name__ == "__main__":
     # Getting employee name
     name = response.get("name")
 
-    # Getting todos
+    # Getting todos list
     todos = requests.get(todo_url).json()
     tot_tasks = len(todos)  # number of total tasks
     incomp_tasks = sum([elem['completed'] is False for elem in todos])
