@@ -26,7 +26,7 @@ if __name__ == "__main__":
     incomp_tasks = sum([elem['completed'] is False for elem in todos])
     comp_tasks = tot_tasks - incomp_tasks
 
-    print(f"Employee {name} is done with tasks({comp_tasks}/{tot_tasks})")
+    print(f"Employee {name} is done with tasks({comp_tasks}/{tot_tasks}):")
 
     for elem in todos:
         if elem.get('completed') is True:
