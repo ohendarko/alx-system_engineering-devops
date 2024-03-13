@@ -1,0 +1,46 @@
+http {
+    include      mime.types;
+
+    # HTTP server block
+    server {
+        listen 80;
+        server_name pharmxod.glocked.tech;
+
+        # Redirect HTTP to HTTPS
+        return 301 https://$host$request_uri;
+    }
+
+    # HTTPS server block
+    server {
+        listen 443 ssl;
+        server_name pharmxod.glocked.tech;
+        root /mnt/access;
+
+        # SSL configuration
+        ssl_certificate /etc/letsencrypt/live/happybirthday.glocked.tech/fullchain.pem;
+        ssl_certificate_key /etc/letsencrypt/live/happybirthday.glocked.tech/privkey.pem;
+        include /etc/letsencrypt/options-ssl-nginx.conf;
+        ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+
+        location / {
+               index holiday.html;
+        }
+
+    }
+    
+    # Flask serving block
+    server {
+        listen 80;
+        server_name 54.145.240.142;
+
+        location /airbnb-onepage/ {
+            proxy_pass http://localhost:5000;  # Assuming your Flask app is running on port 5000
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+        }
+
+
+    }
+}
